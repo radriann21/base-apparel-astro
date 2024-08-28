@@ -3,6 +3,28 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Base Apparel">
-	<h1 class="font-global text-primary-soft-red">hello world</h1>
+	<main class="max-w-full min-h-screen flex flex-col-reverse md:flex-row items-center justify-between">
+		<section class="md:p-20 min-h-screen w-full md:w-[60%]">
+			<img src="/images/logo.svg" alt="logo">
+
+			<section class="md:mt-32">
+				<h1 class="font-global md:text-6xl leading-8">
+					<span class="font-thin text-primary-desaturated-red tracking-[12px]">WE'RE</span> <br>
+					<span class="font-semibold tracking-[12px]">COOMING <br> SOON</span>
+				</h1>
+
+				<p class="mt-4 font-global w-[70%] leading-7 text-primary-desaturated-red font-semibold">
+					Hello fellow shoppers! We're currently building our new fashion store. Add your email below stay up-to-date with announcements and our launch deals.
+				</p>
+			</section>
+		</section>
+		
+		<section class="w-full md:w-[40%] h-full md:min-h-screen">
+			<picture class="w-full min-h-screen">
+				<source srcset="/images/hero-desktop.jpg" media="(min-width: 600px)">
+				<img class="w-full md:min-h-screen object-cover" src="/images/hero-mobile.jpg" alt="girl">
+			</picture>
+		</section>
+	</main>
 </Layout>
 
