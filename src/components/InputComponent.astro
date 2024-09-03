@@ -1,0 +1,41 @@
+<form id="form" class="mt-8 w-full md:w-[70%] relative">
+  <input id="email" class="w-full py-3 px-4 font-global text-primary-desaturated-red rounded-full border-2 border-primary-desaturated-red placeholder:text-sm placeholder:text-primary-desaturated-red focus:border-primary-soft-red focus:outline-none" 
+  type="email" 
+  placeholder="Email Address" 
+  required>
+  <span id="message" class="text-sm font-global text-primary-soft-red hidden">Please provide a valid email</span>
+  <div class="absolute top-0 right-0">
+    <button class="w-24 h-12 rounded-full bg-primary-soft-red text-white flex items-center justify-center transition-all duration-300 hover:translate-y-1 hover:translate-x-1 hover:shadow-lg hover:shadow-primary-soft-red">
+      <img class="w-4 h-6" src="/images/icon-arrow.svg" alt="arrow">
+    </button>
+  </div>
+</form>
+
+<script>
+  const emailInput = document.getElementById('email')
+  const message = document.getElementById('message')
+  const form = document.getElementById('form')
+  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+
+  emailInput.addEventListener('change', (evt) => {
+    const value = evt.target.value
+    
+    if(regex.test(value)) {
+      message.classList.add('hidden')
+    } else {
+      message.classList.remove('hidden')
+    }
+  })
+
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault()
+
+    const value = emailInput.value
+
+    if (regex.test(value)) {
+      form.innerHTML = '<p class="text-green-500">Email submitted successfully</p>';
+    } else {
+      message.classList.remove('hidden')
+    }
+  })
+</script>
