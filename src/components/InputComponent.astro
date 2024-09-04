@@ -3,9 +3,9 @@
   type="email" 
   placeholder="Email Address" 
   required>
-  <span id="message" class="text-sm font-global text-primary-soft-red hidden">Please provide a valid email</span>
-  <div class="absolute top-0 right-0">
-    <button class="w-24 h-12 rounded-full bg-primary-soft-red text-white flex items-center justify-center transition-all duration-300 hover:translate-y-1 hover:translate-x-1 hover:shadow-lg hover:shadow-primary-soft-red">
+  <span id="message" class="text-sm font-global font-bold hidden"></span>
+  <div class="absolute top-1 right-0">
+    <button class="w-24 h-12 rounded-full outline-none focus:border-none focus:shadow-lg focus:shadow-primary-soft-red bg-primary-soft-red text-white flex items-center justify-center transition-shadow duration-300 hover:shadow-lg hover:shadow-primary-soft-red">
       <img class="w-4 h-6" src="/images/icon-arrow.svg" alt="arrow">
     </button>
   </div>
@@ -15,7 +15,7 @@
   const emailInput = document.getElementById('email')
   const message = document.getElementById('message')
   const form = document.getElementById('form')
-  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
   emailInput.addEventListener('change', (evt) => {
     const value = evt.target.value
@@ -23,7 +23,9 @@
     if(regex.test(value)) {
       message.classList.add('hidden')
     } else {
-      message.classList.remove('hidden')
+      message.classList.remove('hidden', 'text-green-600')
+      message.classList.add('text-primary-soft-red')
+      message.innerHTML = "Please provide a valid email"
     }
   })
 
@@ -33,9 +35,10 @@
     const value = emailInput.value
 
     if (regex.test(value)) {
-      form.innerHTML = '<p class="text-green-500">Email submitted successfully</p>';
-    } else {
-      message.classList.remove('hidden')
-    }
+      message.innerText = "Email registered correctly!"
+      message.classList.remove('hidden', 'text-primary-soft-red')
+      message.classList.add('text-green-600') 
+      form.reset()
+    } 
   })
 </script>
